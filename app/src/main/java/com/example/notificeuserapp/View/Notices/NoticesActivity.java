@@ -1,31 +1,25 @@
-package com.example.notificeuserapp;
+package com.example.notificeuserapp.View.Notices;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.notificeuserapp.View.BaseFragmentActivity;
+import com.example.notificeuserapp.Base.BaseActivity;
 
-public class NoticesActivity extends BaseFragmentActivity {
+public class NoticesActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(isNetworkConnection()){
-            if(getCurrentUser()== null)
-                openLoginActivity();
-            else {
-                initView();
-            }
-        }
-        else{ errorConnection(); }
+        setContentView(R.layout.activity_notices);
+
+        initView();
+
     }
 
-    @Override
+
     public void initView() {
-        setContentView(R.layout.activity_notices);
-        initFragmentViewer();
+
     }
 
     @Override
@@ -35,7 +29,7 @@ public class NoticesActivity extends BaseFragmentActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case 1:
                 openNewNoticeActivity();
                 break;
@@ -47,7 +41,11 @@ public class NoticesActivity extends BaseFragmentActivity {
     }
 
     private void openNewNoticeActivity() {
-        Intent intent = new Intent(this, NewNoticeActivity.class);
-        startActivity(intent);
+        BaseActivity.startActivity(this, NewNoticeActivity.class);
+    }
+
+    @Override
+    protected void onDestroyActivity() {
+
     }
 }

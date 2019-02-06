@@ -6,8 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.example.notificeuserapp.R;
-import com.example.notificeuserapp.View.BaseFragmentActivity;
-import com.example.notificeuserapp.View.Fragment.BaseFragment;
 import com.example.notificeuserapp.View.Fragment.NoticeListFragment;
 
 import java.util.Objects;
