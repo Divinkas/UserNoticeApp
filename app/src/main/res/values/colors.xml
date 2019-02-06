@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#db1d42</color>
+    <color name="colorPrimaryDark">#db1d42</color>
+    <color name="colorAccent">#F9AA33</color>
+
+    <color name="c_light_white_">#f4fff8</color>
+    <color name="c_orange_">#F9AA33</color>
+    <color name="c_btn_bg_">#db1d42</color>
+    <color name="c_code_dark">#333333</color>
+    <color name="c_code_col">#212121</color>
+    <color name="c_gray_">#ccc</color>
+    <color name="c_white_">#fff</color>
+    <color name="c_l_gray_">#f7f7f7</color>
+    <color name="c_item_col">#e4e4e4</color>
+
+    <color name="col_err_bg">#fdc9c9</color>
 </resources>
