@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.example.notificeuserapp.SignInActivity;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -15,6 +16,7 @@ public abstract class AuthentificationActivity extends BaseNetworkActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(isNetworkConnection()){
+            FirebaseApp.initializeApp(this);
             mAuth = FirebaseAuth.getInstance();
         }
     }
@@ -30,7 +32,7 @@ public abstract class AuthentificationActivity extends BaseNetworkActivity {
     }
 
     protected void logOut(){
-        //log out
+        FirebaseAuth.getInstance().signOut();
         openLoginActivity();
     }
 }

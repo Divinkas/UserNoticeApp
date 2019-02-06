@@ -3,7 +3,7 @@ package com.example.notificeuserapp.View;
 import com.example.notificeuserapp.Utils.FragmentViewer;
 
 public abstract class BaseFragmentActivity extends AuthentificationActivity {
-    protected FragmentViewer fragmentViewer;
+    public FragmentViewer fragmentViewer;
 
     @Override
     public void onBackPressed() {

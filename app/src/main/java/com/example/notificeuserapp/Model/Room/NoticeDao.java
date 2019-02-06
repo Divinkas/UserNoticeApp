@@ -11,12 +11,12 @@ import com.example.notificeuserapp.Utils.Constants;
 
 import java.util.List;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
 
 @Dao
 public interface NoticeDao {
     @Query("select * from " + Constants.TABLE_NOTICE + " where " + Constants.USER_ID_NOTICE + " = :userId")
-    Observable<List<Notice>> getAllNoticesUser(String userId);
+    Single<List<Notice>> getAllNoticesUser(String userId);
 
     @Insert
     void insertNotice(Notice newNotice);

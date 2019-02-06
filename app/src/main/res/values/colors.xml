@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#db1d42</color>
-    <color name="colorPrimaryDark">#db1d42</color>
+    <color name="colorPrimary">#DB1D1D</color>
+    <color name="colorPrimaryDark">#BE1111</color>
     <color name="colorAccent">#F9AA33</color>
 
     <color name="c_light_white_">#f4fff8</color>
     <color name="c_orange_">#F9AA33</color>
-    <color name="c_btn_bg_">#db1d42</color>
+    <color name="c_btn_bg_">#DB1D1D</color>
     <color name="c_code_dark">#333333</color>
     <color name="c_code_col">#212121</color>
     <color name="c_gray_">#ccc</color>

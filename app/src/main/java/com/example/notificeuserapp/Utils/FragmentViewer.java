@@ -1,6 +1,5 @@
 package com.example.notificeuserapp.Utils;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -19,12 +18,7 @@ public class FragmentViewer {
 
     public FragmentViewer(BaseFragmentActivity activity) {
         this.activity = activity;
-
         defaultFragment = new NoticeListFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.USER_ID_NOTICE, activity.getCurrentUser().getUid());
-        defaultFragment.setArguments(bundle);
-
         fragmentManager = activity.getSupportFragmentManager();
         showDefaultFragment();
     }

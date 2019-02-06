@@ -6,8 +6,12 @@ import com.example.notificeuserapp.Data.Notice;
 import com.example.notificeuserapp.Model.DatabaseModel;
 import com.example.notificeuserapp.View.Contract.NoticesContract;
 
+import java.util.List;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.internal.observers.ConsumerSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class NoticePresenter {
@@ -31,14 +35,14 @@ public class NoticePresenter {
     public void loadMyNotices(String userId) {
         contract.showLoading();
         if(contract!= null) {
-            disposable = databaseModel
+            databaseModel
                     .getUserNotice(userId)
-                    .observeOn(Schedulers.io())
-                    .subscribeOn(AndroidSchedulers.mainThread())
-                    .subscribe(notices -> {
-                        contract.loadListNotice(notices);
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new ConsumerSingleObserver<>(notices -> {
                         contract.hideLoading();
-                    }, throwable -> contract.showErrorLoading());
+                        contract.loadListNotice(notices);
+                    }, throwable -> contract.showErrorLoading()));
         }
     }
 

@@ -30,16 +30,17 @@ public class NoticesActivity extends BaseFragmentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case 1:
+            case R.id.newNotice:
                 openNewNoticeActivity();
                 break;
-            case 2:
+            case R.id.logOut:
                 logOut();
                 break;
         }

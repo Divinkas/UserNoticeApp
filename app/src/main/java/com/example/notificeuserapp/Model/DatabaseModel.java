@@ -7,9 +7,7 @@ import com.example.notificeuserapp.Model.Room.RoomDB;
 import com.example.notificeuserapp.Model.Room.RoomInstance;
 
 import java.util.List;
-import java.util.concurrent.Callable;
 
-import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
@@ -22,34 +20,32 @@ public class DatabaseModel {
         database = RoomInstance.getInstance(this.context);
     }
 
-    public Observable<List<Notice>> getUserNotice(String userId){
-        return database
-                .noticeDao()
-                .getAllNoticesUser(userId);
+    public Single<List<Notice>> getUserNotice(String userId){
+        return database.noticeDao().getAllNoticesUser(userId);
     }
 
     public void addUserNotice(Notice notice){
-        Single.fromCallable((Callable<Void>) () -> {
+        Single.fromCallable(() -> {
             database.noticeDao().insertNotice(notice);
-            return null;
+            return 0;
         })
         .subscribeOn(Schedulers.io())
         .subscribe();
     }
 
     public void updateUserNotice(Notice notice){
-        Single.fromCallable((Callable<Void>) () -> {
+        Single.fromCallable(() -> {
             database.noticeDao().updateNotice(notice);
-            return null;
+            return 0;
         })
                 .subscribeOn(Schedulers.io())
                 .subscribe();
     }
 
     public void deleteUserNotice(Notice notice){
-        Single.fromCallable((Callable<Void>) () -> {
+        Single.fromCallable(() -> {
             database.noticeDao().deleteNotice(notice);
-            return null;
+            return 0;
         })
                 .subscribeOn(Schedulers.io())
                 .subscribe();
