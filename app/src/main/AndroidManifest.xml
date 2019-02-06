@@ -9,15 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewNoticeActivity"></activity>
-        <activity android:name=".NoticesActivity" />
-        <activity android:name=".SignInActivity">
+        <activity android:name=".View.Notices.NewNoticeActivity" />
+        <activity android:name=".View.Notices.NoticesActivity" />
+        <activity android:name=".View.Login.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".View.Splash.SplashActivity" />
     </application>
 
 </manifest>
