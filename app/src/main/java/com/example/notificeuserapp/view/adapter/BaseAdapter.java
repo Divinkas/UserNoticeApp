@@ -19,7 +19,12 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.Ba
         notifyDataSetChanged();
     }
 
-    abstract class BaseViewHolder extends RecyclerView.ViewHolder{
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    static class BaseViewHolder extends RecyclerView.ViewHolder{
         BaseViewHolder(@NonNull View itemView) {
             super(itemView);
         }
