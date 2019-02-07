@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.notificeuserapp.Presenter.SignInPresenter;
+import com.example.notificeuserapp.Presenter.interfaces.ISignInPresenter;
 import com.example.notificeuserapp.View.AuthentificationActivity;
+import com.example.notificeuserapp.View.ISignInView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -18,19 +21,17 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import static com.example.notificeuserapp.Utils.Constants.RC_SIGN_IN;
 
-public class SignInActivity extends AuthentificationActivity {
+public class SignInActivity extends AuthentificationActivity implements ISignInView {
+
+    private ISignInPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter = new SignInPresenter(this);
         if(isNetworkConnection()){
-            if(getCurrentUser()== null)
-                initView();
-            else {
-                Intent intent = new Intent(this, NoticesActivity.class);
-                startActivity(intent);
-                finish();
-            }
+            if(getCurrentUser()== null) initView();
+            else { openNextActivity(); }
         }
         else{ errorConnection(); }
     }
@@ -38,16 +39,9 @@ public class SignInActivity extends AuthentificationActivity {
     @Override
     public void initView() {
         setContentView(R.layout.activity_main);
+        setTitle(R.string.login_title);
         SignInButton signInButton = findViewById(R.id.btnSingInGoogle);
-        signInButton.setOnClickListener(view -> {
-            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.client_id))
-                .requestEmail()
-                .build();
-            GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getApplicationContext(), gso);
-            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-            startActivityForResult(signInIntent, RC_SIGN_IN);
-        });
+        signInButton.setOnClickListener(view -> presenter.signInClicked());
     }
 
     @Override
@@ -65,7 +59,7 @@ public class SignInActivity extends AuthentificationActivity {
                         .addOnCompleteListener(SignInActivity.this, task2 -> {
                             setContentView(R.layout.activity_main);
                             if (task2.isSuccessful()) {
-                                openNoticeActivity();
+                                openNextActivity();
                             }
                         });
             } catch (ApiException ignored) {
@@ -74,10 +68,21 @@ public class SignInActivity extends AuthentificationActivity {
         }
     }
 
-    private void openNoticeActivity(){
+    @Override
+    public void tryingView() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.client_id))
+                .requestEmail()
+                .build();
+        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getApplicationContext(), gso);
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    public void openNextActivity() {
         Intent intent = new Intent(this, NoticesActivity.class);
         startActivity(intent);
         finish();
     }
-
 }

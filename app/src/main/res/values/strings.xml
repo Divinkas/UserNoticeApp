@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NotificeUserApp</string>
+    <string name="app_name">Заметки</string>
     <string name="refresh">Refresh</string>
     <string name="log_out">Log Out</string>
     <string name="new_notice">New Notice</string>
@@ -9,4 +9,8 @@
     <string name="text_notice">Текст заметки</string>
     <string name="add_btn_tex">Добавить</string>
     <string name="update">Изменить</string>
+    <string name="login_title">Вход</string>
+    <string name="list_title">Заметки</string>
+    <string name="update_title">Редактирование</string>
+    <string name="insert_title">Добавление</string>
 </resources>

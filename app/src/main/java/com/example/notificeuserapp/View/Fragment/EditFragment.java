@@ -13,12 +13,12 @@ import android.widget.Toast;
 
 import com.example.notificeuserapp.Data.Notice;
 import com.example.notificeuserapp.Presenter.NoticePresenter;
-import com.example.notificeuserapp.Presenter.interfaces.IUpdatePresenter;
+import com.example.notificeuserapp.Presenter.interfaces.IUpdateNoticePresenter;
 import com.example.notificeuserapp.R;
 import com.example.notificeuserapp.Utils.Constants;
 
 public class EditFragment extends BaseFragment {
-    private IUpdatePresenter presenter;
+    private IUpdateNoticePresenter presenter;
 
     @Override
     public void onAttach(Context context) {

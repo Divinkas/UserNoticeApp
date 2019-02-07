@@ -27,6 +27,7 @@ public class NoticesActivity extends BaseFragmentActivity implements IFragmentVi
     @Override
     public void initView() {
         setContentView(R.layout.activity_notices);
+        setTitle(R.string.list_title);
         showDefaultFragment();
     }
 

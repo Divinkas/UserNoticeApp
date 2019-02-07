@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.notificeuserapp.Data.Notice;
-import com.example.notificeuserapp.Presenter.interfaces.ILoadPresenter;
+import com.example.notificeuserapp.Presenter.interfaces.ILoadNoticePresenter;
 import com.example.notificeuserapp.R;
 import com.example.notificeuserapp.Utils.Constants;
 import com.example.notificeuserapp.View.Fragment.BaseFragment;
@@ -24,11 +24,11 @@ import java.util.List;
 public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeViewHolder> {
     private List<Notice> noticeList;
     private Context context;
-    private ILoadPresenter presenter;
+    private ILoadNoticePresenter presenter;
     private IFragmentView view;
 
     public NoticeAdapter(List<Notice> noticeList, Context context,
-                         ILoadPresenter presenter, IFragmentView view) {
+                         ILoadNoticePresenter presenter, IFragmentView view) {
         this.noticeList = noticeList;
         this.context = context;
         this.presenter = presenter;

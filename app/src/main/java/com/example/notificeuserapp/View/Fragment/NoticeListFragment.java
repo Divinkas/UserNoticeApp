@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.notificeuserapp.Data.Notice;
 import com.example.notificeuserapp.Presenter.NoticePresenter;
-import com.example.notificeuserapp.Presenter.interfaces.ILoadPresenter;
+import com.example.notificeuserapp.Presenter.interfaces.ILoadNoticePresenter;
 import com.example.notificeuserapp.R;
 import com.example.notificeuserapp.View.Adapter.NoticeAdapter;
 import com.example.notificeuserapp.View.BaseFragmentActivity;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NoticeListFragment  extends BaseFragment implements NoticesContract {
-    private ILoadPresenter presenter;
+    private ILoadNoticePresenter presenter;
     private String userId;
 
     private SwipeRefreshLayout refreshLayout;

@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.example.notificeuserapp.Data.Notice;
 import com.example.notificeuserapp.Model.DatabaseModel;
-import com.example.notificeuserapp.Presenter.interfaces.IInsertPresenter;
-import com.example.notificeuserapp.Presenter.interfaces.ILoadPresenter;
-import com.example.notificeuserapp.Presenter.interfaces.IUpdatePresenter;
+import com.example.notificeuserapp.Presenter.interfaces.IInsertNoticePresenter;
+import com.example.notificeuserapp.Presenter.interfaces.ILoadNoticePresenter;
+import com.example.notificeuserapp.Presenter.interfaces.IUpdateNoticePresenter;
 import com.example.notificeuserapp.View.Contract.NoticesContract;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -14,7 +14,7 @@ import io.reactivex.internal.observers.ConsumerSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class NoticePresenter extends BasePresenter
-        implements ILoadPresenter, IUpdatePresenter, IInsertPresenter {
+        implements ILoadNoticePresenter, IUpdateNoticePresenter, IInsertNoticePresenter {
     private Context context;
     private NoticesContract contract;
 
