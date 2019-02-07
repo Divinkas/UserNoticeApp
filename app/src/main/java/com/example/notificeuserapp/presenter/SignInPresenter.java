@@ -9,6 +9,7 @@ import com.example.notificeuserapp.view.interfaces.ISignInView;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SignInPresenter implements ISignInPresenter {
+
     private ISignInView view;
     private FirebaseModel firebaseModel;
 

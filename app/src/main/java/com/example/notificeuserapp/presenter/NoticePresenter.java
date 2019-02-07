@@ -67,4 +67,5 @@ public class NoticePresenter extends BasePresenter
         //databaseModel.deleteUserNotice(notice);
     }
 
+
 }
