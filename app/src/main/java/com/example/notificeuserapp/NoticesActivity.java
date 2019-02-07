@@ -6,8 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.notificeuserapp.View.BaseFragmentActivity;
+import com.example.notificeuserapp.View.Fragment.BaseFragment;
+import com.example.notificeuserapp.View.IFragmentView;
 
-public class NoticesActivity extends BaseFragmentActivity {
+public class NoticesActivity extends BaseFragmentActivity implements IFragmentView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class NoticesActivity extends BaseFragmentActivity {
     @Override
     public void initView() {
         setContentView(R.layout.activity_notices);
-        initFragmentViewer();
+        showDefaultFragment();
     }
 
     @Override
@@ -50,5 +52,10 @@ public class NoticesActivity extends BaseFragmentActivity {
     private void openNewNoticeActivity() {
         Intent intent = new Intent(this, NewNoticeActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void openFragment(BaseFragment baseFragment) {
+        showFragment(baseFragment);
     }
 }

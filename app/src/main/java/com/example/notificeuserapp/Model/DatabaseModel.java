@@ -11,7 +11,7 @@ import java.util.List;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
-public class DatabaseModel {
+public class DatabaseModel implements IDatabaseModel {
     private Context context;
     private RoomDB database;
 
@@ -20,10 +20,12 @@ public class DatabaseModel {
         database = RoomInstance.getInstance(this.context);
     }
 
+    @Override
     public Single<List<Notice>> getUserNotice(String userId){
         return database.noticeDao().getAllNoticesUser(userId);
     }
 
+    @Override
     public void addUserNotice(Notice notice){
         Single.fromCallable(() -> {
             database.noticeDao().insertNotice(notice);
@@ -33,6 +35,7 @@ public class DatabaseModel {
         .subscribe();
     }
 
+    @Override
     public void updateUserNotice(Notice notice){
         Single.fromCallable(() -> {
             database.noticeDao().updateNotice(notice);
@@ -42,6 +45,7 @@ public class DatabaseModel {
                 .subscribe();
     }
 
+    @Override
     public void deleteUserNotice(Notice notice){
         Single.fromCallable(() -> {
             database.noticeDao().deleteNotice(notice);

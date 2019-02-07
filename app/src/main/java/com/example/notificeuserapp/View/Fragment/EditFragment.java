@@ -9,14 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.notificeuserapp.Data.Notice;
 import com.example.notificeuserapp.Presenter.NoticePresenter;
+import com.example.notificeuserapp.Presenter.interfaces.IUpdatePresenter;
 import com.example.notificeuserapp.R;
 import com.example.notificeuserapp.Utils.Constants;
 
 public class EditFragment extends BaseFragment {
-    private NoticePresenter presenter;
+    private IUpdatePresenter presenter;
 
     @Override
     public void onAttach(Context context) {
@@ -50,13 +52,8 @@ public class EditFragment extends BaseFragment {
                 presenter.updateNotice(
                         new Notice(idNotice, apcText.getText().toString(), userId)
                 );
+                Toast.makeText(context, "Заметка была изменена!", Toast.LENGTH_SHORT).show();
         });
-    }
-
-    @Override
-    public void onDetach() {
-        presenter.unSubscribe();
-        super.onDetach();
     }
 
 }

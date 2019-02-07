@@ -12,29 +12,27 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.notificeuserapp.Data.Notice;
-import com.example.notificeuserapp.Presenter.NoticePresenter;
+import com.example.notificeuserapp.Presenter.interfaces.ILoadPresenter;
 import com.example.notificeuserapp.R;
 import com.example.notificeuserapp.Utils.Constants;
-import com.example.notificeuserapp.Utils.FragmentViewer;
 import com.example.notificeuserapp.View.Fragment.BaseFragment;
 import com.example.notificeuserapp.View.Fragment.EditFragment;
+import com.example.notificeuserapp.View.IFragmentView;
 
 import java.util.List;
 
 public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeViewHolder> {
     private List<Notice> noticeList;
     private Context context;
-    private NoticePresenter presenter;
-    private FragmentViewer fragmentViewer;
+    private ILoadPresenter presenter;
+    private IFragmentView view;
 
-    public NoticeAdapter(List<Notice> noticeList,
-                         Context context,
-                         NoticePresenter presenter,
-                         FragmentViewer fragmentViewer) {
+    public NoticeAdapter(List<Notice> noticeList, Context context,
+                         ILoadPresenter presenter, IFragmentView view) {
         this.noticeList = noticeList;
         this.context = context;
         this.presenter = presenter;
-        this.fragmentViewer = fragmentViewer;
+        this.view = view;
     }
 
     @NonNull
@@ -63,7 +61,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
             bundle.putString(Constants.TEXT_NOTICE, noticeList.get(position).getTextNotice());
             optionNoticeFragment.setArguments(bundle);
 
-            fragmentViewer.showFragment(optionNoticeFragment);
+            showFragment(optionNoticeFragment);
         });
     }
 
@@ -75,6 +73,10 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
     public void setList(List<Notice> newList){
         noticeList = newList;
         notifyDataSetChanged();
+    }
+
+    private void showFragment(BaseFragment optionNoticeFragment) {
+        view.openFragment(optionNoticeFragment);
     }
 
     class NoticeViewHolder extends RecyclerView.ViewHolder{

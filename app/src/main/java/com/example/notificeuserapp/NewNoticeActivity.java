@@ -7,13 +7,14 @@ import android.widget.Toast;
 
 import com.example.notificeuserapp.Data.Notice;
 import com.example.notificeuserapp.Presenter.NoticePresenter;
+import com.example.notificeuserapp.Presenter.interfaces.IInsertPresenter;
 import com.example.notificeuserapp.Utils.Constants;
 import com.example.notificeuserapp.View.AuthentificationActivity;
 
 import java.util.Objects;
 
 public class NewNoticeActivity extends AuthentificationActivity {
-    private NoticePresenter presenter;
+    private IInsertPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +52,4 @@ public class NewNoticeActivity extends AuthentificationActivity {
         });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        presenter.unSubscribe();
-    }
 }

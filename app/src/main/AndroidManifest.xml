@@ -15,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".NewNoticeActivity" />
-        <activity android:name=".NoticesActivity" />
-        <activity android:name=".SignInActivity">
+        <activity android:name=".NewNoticeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".NoticesActivity" android:screenOrientation="portrait" />
+        <activity android:name=".SignInActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

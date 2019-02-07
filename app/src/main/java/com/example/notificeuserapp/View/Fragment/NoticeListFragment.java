@@ -15,23 +15,26 @@ import android.widget.Toast;
 
 import com.example.notificeuserapp.Data.Notice;
 import com.example.notificeuserapp.Presenter.NoticePresenter;
+import com.example.notificeuserapp.Presenter.interfaces.ILoadPresenter;
 import com.example.notificeuserapp.R;
-import com.example.notificeuserapp.Utils.Constants;
 import com.example.notificeuserapp.View.Adapter.NoticeAdapter;
 import com.example.notificeuserapp.View.BaseFragmentActivity;
 import com.example.notificeuserapp.View.Contract.NoticesContract;
+import com.example.notificeuserapp.View.IFragmentView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NoticeListFragment  extends BaseFragment implements NoticesContract {
-    private NoticePresenter presenter;
+    private ILoadPresenter presenter;
     private String userId;
 
     private SwipeRefreshLayout refreshLayout;
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private NoticeAdapter adapter;
+
+    private BaseFragmentActivity activity;
 
     @Override
     public void onAttach(Context context) {
@@ -58,9 +61,9 @@ public class NoticeListFragment  extends BaseFragment implements NoticesContract
         refreshLayout = view.findViewById(R.id.refreshLayout);
 
 
-        BaseFragmentActivity activity = (BaseFragmentActivity) getActivity();
+        activity = (BaseFragmentActivity) getActivity();
         assert activity != null;
-        adapter = new NoticeAdapter(new ArrayList<>(), context, presenter, activity.fragmentViewer);
+        adapter = new NoticeAdapter(new ArrayList<>(), context, presenter, (IFragmentView) activity);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
 
@@ -101,9 +104,4 @@ public class NoticeListFragment  extends BaseFragment implements NoticesContract
         progressBar.setVisibility(View.GONE);
     }
 
-    @Override
-    public void onDetach() {
-        presenter.unSubscribe();
-        super.onDetach();
-    }
 }

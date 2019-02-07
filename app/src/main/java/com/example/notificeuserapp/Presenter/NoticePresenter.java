@@ -4,22 +4,19 @@ import android.content.Context;
 
 import com.example.notificeuserapp.Data.Notice;
 import com.example.notificeuserapp.Model.DatabaseModel;
+import com.example.notificeuserapp.Presenter.interfaces.IInsertPresenter;
+import com.example.notificeuserapp.Presenter.interfaces.ILoadPresenter;
+import com.example.notificeuserapp.Presenter.interfaces.IUpdatePresenter;
 import com.example.notificeuserapp.View.Contract.NoticesContract;
 
-import java.util.List;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.internal.observers.ConsumerSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class NoticePresenter {
-    private DatabaseModel databaseModel;
+public class NoticePresenter extends BasePresenter
+        implements ILoadPresenter, IUpdatePresenter, IInsertPresenter {
     private Context context;
     private NoticesContract contract;
-
-    private Disposable disposable;
 
     public NoticePresenter(Context context){
         this.context = context;
@@ -32,6 +29,7 @@ public class NoticePresenter {
         databaseModel = new DatabaseModel(this.context);
     }
 
+    @Override
     public void loadMyNotices(String userId) {
         contract.showLoading();
         if(contract!= null) {
@@ -46,21 +44,19 @@ public class NoticePresenter {
         }
     }
 
+    @Override
     public void updateNotice(Notice notice){
         databaseModel.updateUserNotice(notice);
     }
 
+    @Override
     public void insertNotice(Notice notice){
         databaseModel.addUserNotice(notice);
     }
 
+    @Override
     public void deleteNotice(Notice notice){
         databaseModel.deleteUserNotice(notice);
     }
 
-    public void unSubscribe(){
-        if(disposable != null){
-            disposable.dispose();
-        }
-    }
 }
