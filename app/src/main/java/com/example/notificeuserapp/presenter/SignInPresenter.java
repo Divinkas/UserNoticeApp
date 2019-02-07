@@ -1,5 +1,6 @@
 package com.example.notificeuserapp.presenter;
 
+
 import android.content.Context;
 
 import com.example.notificeuserapp.model.FirebaseModel;
@@ -11,16 +12,14 @@ public class SignInPresenter implements ISignInPresenter {
     private ISignInView view;
     private FirebaseModel firebaseModel;
 
-    public SignInPresenter(ISignInView iSignInView, Context context){
-        this.view = iSignInView;
+    public SignInPresenter(ISignInView view, Context context) {
+        this.view = view;
         firebaseModel = new FirebaseModel(context);
     }
 
-    @Override
     public FirebaseUser getCurrentUser(){
         return firebaseModel.getCurrentUser();
     }
-
     @Override
     public void signInClicked() {
         view.tryingView(firebaseModel.getSignInIntent());
