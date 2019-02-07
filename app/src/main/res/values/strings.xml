@@ -13,4 +13,8 @@
     <string name="list_title">Заметки</string>
     <string name="update_title">Редактирование</string>
     <string name="insert_title">Добавление</string>
+    <string name="notice_added">Заметка добавлена</string>
+    <string name="failed_autorize">Авторизация неуспешна!</string>
+    <string name="notice_is_changed">Заметка была изменена!</string>
+    <string name="error_loading">Error loading!</string>
 </resources>
