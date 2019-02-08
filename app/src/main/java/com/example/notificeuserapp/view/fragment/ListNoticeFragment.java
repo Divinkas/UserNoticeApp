@@ -39,7 +39,8 @@ public class ListNoticeFragment extends BaseFragment implements INoticeView, ILi
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        presenter = new NoticePresenter(context, this);
+        presenter = new NoticePresenter(context);
+        ((NoticePresenter) presenter).setView(this);
     }
 
     @Nullable

@@ -4,6 +4,7 @@ import com.example.notificeuserapp.model.data.Notice;
 import com.example.notificeuserapp.model.room.base.RoomDB;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.function.IntConsumer;
 
 import io.reactivex.Single;
@@ -22,46 +23,35 @@ public class RoomNoticeModel implements IRoomNoticeModel {
     }
 
     @Override
-    public void sendQuery(IntConsumer method){
-        Single.fromCallable(() -> method)
+    public void sendQuery(Callable<Integer> callable){
+        Single.fromCallable(callable)
                 .subscribeOn(Schedulers.io())
                 .subscribe();
     }
 
 
-//    public RoomNoticeModel(Context context){
-//        database = ((MyApplication)context.getApplicationContext()).getRoomInstance();
-//    }
+    @Override
+    public void addUserNotice(Notice notice){
+        sendQuery(() -> {
+            database.noticeDao().insertNotice(notice);
+            return 0;
+        });
+    }
 
+    @Override
+    public void updateUserNotice(Notice notice){
+        sendQuery( () -> {
+            database.noticeDao().updateNotice(notice);
+            return 0;
+        });
+    }
 
-//    @Override
-//    public void addUserNotice(Notice notice){
-//        Single.fromCallable(() -> {
-//            database.noticeDao().insertNotice(notice);
-//            return 0;
-//        })
-//        .subscribeOn(Schedulers.io())
-//        .subscribe();
-//    }
-//
-//    @Override
-//    public void updateUserNotice(Notice notice){
-//        Single.fromCallable(() -> {
-//            database.noticeDao().updateNotice(notice);
-//            return 0;
-//        })
-//                .subscribeOn(Schedulers.io())
-//                .subscribe();
-//    }
-//
-//    @Override
-//    public void deleteUserNotice(Notice notice){
-//        Single.fromCallable(() -> {
-//            database.noticeDao().deleteNotice(notice);
-//            return 0;
-//        })
-//                .subscribeOn(Schedulers.io())
-//                .subscribe();
-//    }
+    @Override
+    public void deleteUserNotice(Notice notice){
+        sendQuery(() -> {
+            database.noticeDao().deleteNotice(notice);
+            return 0;
+        });
+    }
 
 }

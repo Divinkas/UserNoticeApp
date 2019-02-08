@@ -30,7 +30,10 @@ public class SignInActivity extends AuthentificationActivity implements ISignInV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new SignInPresenter(this, this);
+
+        presenter = new SignInPresenter(this);
+        ((SignInPresenter) presenter).setView(this);
+
         if(isNetworkConnection()){
             if(presenter.getCurrentUser()== null) initView();
             else { openNextActivity(); }
@@ -59,10 +62,9 @@ public class SignInActivity extends AuthentificationActivity implements ISignInV
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 assert account != null;
-                AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                firebaseAuth
-                        .signInWithCredential(credential)
+                presenter
+                        .getFirebaseAuth()
+                        .signInWithCredential(GoogleAuthProvider.getCredential(account.getIdToken(), null))
                         .addOnCompleteListener(SignInActivity.this, task2 -> {
                             setContentView(R.layout.activity_sign_in);
                             if (task2.isSuccessful()) {

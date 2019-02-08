@@ -7,8 +7,10 @@ import com.example.notificeuserapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 
 public class FirebaseModel {
@@ -18,6 +20,10 @@ public class FirebaseModel {
     public FirebaseModel(Context context){
         this.context = context;
         firebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    public FirebaseAuth getFirebaseAuth(){
+        return firebaseAuth;
     }
 
     public FirebaseUser getCurrentUser(){

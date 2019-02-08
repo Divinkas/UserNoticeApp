@@ -16,10 +16,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.internal.observers.ConsumerSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class NoticePresenter extends BasePresenter
+public class NoticePresenter extends BasePresenter<INoticeView>
         implements ILoadNoticePresenter, IUpdateNoticePresenter, IInsertNoticePresenter {
 
-    private INoticeView contract;
     private IRoomNoticeModel roomNoticeModel;
     private RoomDB database;
 
@@ -28,43 +27,34 @@ public class NoticePresenter extends BasePresenter
         roomNoticeModel = new RoomNoticeModel(database);
     }
 
-    public NoticePresenter(Context context, INoticeView contract) {
-        this.contract = contract;
-        database = ((MyApplication)context.getApplicationContext()).getRoomInstance();
-        roomNoticeModel = new RoomNoticeModel(database);
-    }
-
     @Override
     public void loadMyNotices(String userId) {
-        contract.showLoading();
-        if(contract!= null) {
+        getView().showLoading();
+        if(getView()!= null) {
             roomNoticeModel
                     .getUserNotice(userId)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new ConsumerSingleObserver<>(notices -> {
-                        contract.hideLoading();
-                        contract.loadListNotice(notices);
-                    }, throwable -> contract.showErrorLoading()));
+                        getView().hideLoading();
+                        getView().loadListNotice(notices);
+                    }, throwable -> getView().showErrorLoading()));
         }
     }
 
     @Override
     public void updateNotice(Notice notice){
-        roomNoticeModel.sendQuery(method -> database.noticeDao().updateNotice(notice));
-        //databaseModel.updateUserNotice(notice);
+        roomNoticeModel.updateUserNotice(notice);
     }
 
     @Override
     public void insertNotice(Notice notice){
-        roomNoticeModel.sendQuery(method -> database.noticeDao().insertNotice(notice));
-        //databaseModel.addUserNotice(notice);
+        roomNoticeModel.addUserNotice(notice);
     }
 
     @Override
     public void deleteNotice(Notice notice){
-        roomNoticeModel.sendQuery(method -> database.noticeDao().deleteNotice(notice));
-        //databaseModel.deleteUserNotice(notice);
+        roomNoticeModel.deleteUserNotice(notice);
     }
 
 
