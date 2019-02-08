@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import com.example.notificeuserapp.R;
 
-public abstract class BaseNetworkActivity extends AppCompatActivity {
+public abstract class BaseNetworkActivity extends BaseActivity {
 
     public abstract void initView();
 
