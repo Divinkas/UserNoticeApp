@@ -20,10 +20,9 @@ public class NoticePresenter extends BasePresenter<INoticeView>
         implements ILoadNoticePresenter, IUpdateNoticePresenter, IInsertNoticePresenter {
 
     private IRoomNoticeModel roomNoticeModel;
-    private RoomDB database;
 
     public NoticePresenter(Context context){
-        database = ((MyApplication)context.getApplicationContext()).getRoomInstance();
+        RoomDB database = ((MyApplication) context.getApplicationContext()).getRoomInstance();
         roomNoticeModel = new RoomNoticeModel(database);
     }
 

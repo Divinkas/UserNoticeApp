@@ -1,6 +1,8 @@
 package com.example.notificeuserapp.presenter;
 
-abstract class BasePresenter<T>{
+import com.example.notificeuserapp.presenter.interfaces.IPresenter;
+
+abstract class BasePresenter<T> implements IPresenter {
     private T view;
 
     public T getView(){
