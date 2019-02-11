@@ -19,7 +19,7 @@ import com.example.notificeuserapp.presenter.notice.interfaces.ILoadNoticePresen
 import com.example.notificeuserapp.R;
 import com.example.notificeuserapp.utils.Constants;
 import com.example.notificeuserapp.view.application.MyApplication;
-import com.example.notificeuserapp.view.adapter.NoticeAdapter;
+import com.example.notificeuserapp.view.adapter.notice.NoticeAdapter;
 import com.example.notificeuserapp.view.activity.base.BaseFragmentActivity;
 import com.example.notificeuserapp.view.callback.IListNoticeCallback;
 import com.example.notificeuserapp.view.fragment.base.BaseFragment;

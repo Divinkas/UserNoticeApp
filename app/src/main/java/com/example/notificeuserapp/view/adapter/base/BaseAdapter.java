@@ -1,4 +1,4 @@
-package com.example.notificeuserapp.view.adapter;
+package com.example.notificeuserapp.view.adapter.base;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -24,8 +24,8 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.Ba
         return list.size();
     }
 
-    static class BaseViewHolder extends RecyclerView.ViewHolder{
-        BaseViewHolder(@NonNull View itemView) {
+    public static class BaseViewHolder extends RecyclerView.ViewHolder{
+        public BaseViewHolder(@NonNull View itemView) {
             super(itemView);
         }
     }

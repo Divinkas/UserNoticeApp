@@ -1,4 +1,4 @@
-package com.example.notificeuserapp.view.adapter;
+package com.example.notificeuserapp.view.adapter.notice;
 
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.notificeuserapp.R;
 import com.example.notificeuserapp.model.data.Notice;
+import com.example.notificeuserapp.view.adapter.base.BaseAdapter;
 import com.example.notificeuserapp.view.callback.IListNoticeCallback;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class NoticeAdapter extends BaseAdapter<Notice> {
 
 
 
-    class NoticeViewHolder extends BaseViewHolder{
+    public class NoticeViewHolder extends BaseViewHolder{
         TextView tvNoticeId, tvNoticeText;
         LinearLayout llContainer;
         ImageView imgDeleteNotice;
