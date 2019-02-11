@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import com.example.notificeuserapp.R;
 import com.example.notificeuserapp.view.activity.base.BaseFragmentActivity;
+import com.example.notificeuserapp.view.application.MyApplication;
 
 public class NoticesActivity extends BaseFragmentActivity {
 
@@ -14,7 +15,7 @@ public class NoticesActivity extends BaseFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(isNetworkConnection()){
-            if(getCurrentUser()== null)
+            if((MyApplication.getFirebaseAuth() != null ? MyApplication.getFirebaseAuth().getCurrentUser() : null) == null)
                 openLoginActivity();
             else {
                 initView();
