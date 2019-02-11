@@ -13,7 +13,7 @@ public abstract class AuthentificationActivity extends BaseNetworkActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyApplication.initFirebase(this);
+        MyApplication.initFirebase();
     }
 
     protected void openLoginActivity(){

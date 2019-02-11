@@ -16,6 +16,7 @@ public class MyApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        FirebaseApp.initializeApp(getApplicationContext());
     }
 
     public static RoomDB getRoomInstance(Context context){
@@ -25,20 +26,17 @@ public class MyApplication extends MultiDexApplication {
         return room;
     }
 
-    public static void initFirebase(Context context){
-        if(isFirebaseAuth()) {
-            FirebaseApp.initializeApp(context);
+    public static void initFirebase(){
+        if(!isFirebaseAuth())
             firebaseAuth = FirebaseAuth.getInstance();
-        }
     }
 
     public static FirebaseAuth getFirebaseAuth(){
-        if(!isFirebaseAuth())
+        if(isFirebaseAuth())
             return firebaseAuth;
         else
             return null;
     }
-
     private static boolean isFirebaseAuth(){
         return firebaseAuth != null;
     }
