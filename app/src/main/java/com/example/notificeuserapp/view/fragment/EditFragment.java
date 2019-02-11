@@ -12,12 +12,13 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.notificeuserapp.model.data.Notice;
-import com.example.notificeuserapp.presenter.NoticePresenter;
-import com.example.notificeuserapp.presenter.interfaces.IUpdateNoticePresenter;
+import com.example.notificeuserapp.presenter.notice.NoticePresenter;
+import com.example.notificeuserapp.presenter.notice.interfaces.IUpdateNoticePresenter;
 import com.example.notificeuserapp.R;
 import com.example.notificeuserapp.utils.Constants;
+import com.example.notificeuserapp.view.fragment.base.BaseFragment;
 
-public class EditFragment extends BaseFragment{
+public class EditFragment extends BaseFragment {
     private IUpdateNoticePresenter presenter;
 
     @Override

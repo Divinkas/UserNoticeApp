@@ -1,15 +1,14 @@
-package com.example.notificeuserapp.presenter;
+package com.example.notificeuserapp.presenter.notice;
 
 import android.content.Context;
 
 import com.example.notificeuserapp.model.data.Notice;
-import com.example.notificeuserapp.model.room.IRoomNoticeModel;
-import com.example.notificeuserapp.model.room.RoomNoticeModel;
-import com.example.notificeuserapp.model.room.base.RoomDB;
-import com.example.notificeuserapp.presenter.interfaces.IInsertNoticePresenter;
-import com.example.notificeuserapp.presenter.interfaces.ILoadNoticePresenter;
-import com.example.notificeuserapp.presenter.interfaces.IUpdateNoticePresenter;
-import com.example.notificeuserapp.view.MyApplication;
+import com.example.notificeuserapp.model.room.notice.IRoomNoticeModel;
+import com.example.notificeuserapp.model.room.notice.RoomNoticeModel;
+import com.example.notificeuserapp.presenter.base.BasePresenter;
+import com.example.notificeuserapp.presenter.notice.interfaces.IInsertNoticePresenter;
+import com.example.notificeuserapp.presenter.notice.interfaces.ILoadNoticePresenter;
+import com.example.notificeuserapp.presenter.notice.interfaces.IUpdateNoticePresenter;
 import com.example.notificeuserapp.view.interfaces.INoticeView;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -22,8 +21,7 @@ public class NoticePresenter extends BasePresenter<INoticeView>
     private IRoomNoticeModel roomNoticeModel;
 
     public NoticePresenter(Context context){
-        RoomDB database = ((MyApplication) context.getApplicationContext()).getRoomInstance();
-        roomNoticeModel = new RoomNoticeModel(database);
+        roomNoticeModel = new RoomNoticeModel(context);
     }
 
     @Override

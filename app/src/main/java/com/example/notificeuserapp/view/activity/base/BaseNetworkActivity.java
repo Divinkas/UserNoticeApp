@@ -1,8 +1,7 @@
-package com.example.notificeuserapp.view.activity;
+package com.example.notificeuserapp.view.activity.base;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.example.notificeuserapp.R;

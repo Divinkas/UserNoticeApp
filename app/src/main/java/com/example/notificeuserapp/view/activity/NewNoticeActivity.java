@@ -7,9 +7,10 @@ import android.widget.Toast;
 
 import com.example.notificeuserapp.R;
 import com.example.notificeuserapp.model.data.Notice;
-import com.example.notificeuserapp.presenter.NoticePresenter;
-import com.example.notificeuserapp.presenter.interfaces.IInsertNoticePresenter;
+import com.example.notificeuserapp.presenter.notice.NoticePresenter;
+import com.example.notificeuserapp.presenter.notice.interfaces.IInsertNoticePresenter;
 import com.example.notificeuserapp.utils.Constants;
+import com.example.notificeuserapp.view.activity.base.AuthentificationActivity;
 
 import java.util.Objects;
 

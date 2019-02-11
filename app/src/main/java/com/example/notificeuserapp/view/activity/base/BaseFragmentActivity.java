@@ -1,4 +1,4 @@
-package com.example.notificeuserapp.view.activity;
+package com.example.notificeuserapp.view.activity.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.example.notificeuserapp.R;
-import com.example.notificeuserapp.view.fragment.BaseFragment;
+import com.example.notificeuserapp.view.fragment.base.BaseFragment;
 import com.example.notificeuserapp.view.fragment.ListNoticeFragment;
 
 import java.util.Objects;

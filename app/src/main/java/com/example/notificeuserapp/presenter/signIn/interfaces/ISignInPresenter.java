@@ -1,4 +1,4 @@
-package com.example.notificeuserapp.presenter.interfaces;
+package com.example.notificeuserapp.presenter.signIn.interfaces;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

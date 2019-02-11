@@ -1,4 +1,4 @@
-package com.example.notificeuserapp.model.room;
+package com.example.notificeuserapp.model.room.notice;
 
 import com.example.notificeuserapp.model.data.Notice;
 

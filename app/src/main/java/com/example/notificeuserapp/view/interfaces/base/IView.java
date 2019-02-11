@@ -1,4 +1,4 @@
-package com.example.notificeuserapp.view.interfaces;
+package com.example.notificeuserapp.view.interfaces.base;
 
 public interface IView {
     void showLoading();

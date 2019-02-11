@@ -1,12 +1,12 @@
-package com.example.notificeuserapp.presenter;
+package com.example.notificeuserapp.presenter.signIn;
 
 
 import android.content.Context;
 
-import com.example.notificeuserapp.model.FirebaseModel;
-import com.example.notificeuserapp.presenter.interfaces.ISignInPresenter;
+import com.example.notificeuserapp.model.firebase.FirebaseModel;
+import com.example.notificeuserapp.presenter.base.BasePresenter;
+import com.example.notificeuserapp.presenter.signIn.interfaces.ISignInPresenter;
 import com.example.notificeuserapp.view.interfaces.ISignInView;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

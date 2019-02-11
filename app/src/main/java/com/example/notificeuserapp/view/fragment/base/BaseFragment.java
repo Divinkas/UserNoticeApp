@@ -1,4 +1,4 @@
-package com.example.notificeuserapp.view.fragment;
+package com.example.notificeuserapp.view.fragment.base;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

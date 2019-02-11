@@ -14,16 +14,20 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.notificeuserapp.model.data.Notice;
-import com.example.notificeuserapp.presenter.NoticePresenter;
-import com.example.notificeuserapp.presenter.interfaces.ILoadNoticePresenter;
+import com.example.notificeuserapp.presenter.notice.NoticePresenter;
+import com.example.notificeuserapp.presenter.notice.interfaces.ILoadNoticePresenter;
 import com.example.notificeuserapp.R;
+import com.example.notificeuserapp.utils.Constants;
+import com.example.notificeuserapp.view.application.MyApplication;
 import com.example.notificeuserapp.view.adapter.NoticeAdapter;
-import com.example.notificeuserapp.view.activity.BaseFragmentActivity;
+import com.example.notificeuserapp.view.activity.base.BaseFragmentActivity;
 import com.example.notificeuserapp.view.callback.IListNoticeCallback;
+import com.example.notificeuserapp.view.fragment.base.BaseFragment;
 import com.example.notificeuserapp.view.interfaces.INoticeView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ListNoticeFragment extends BaseFragment implements INoticeView, IListNoticeCallback {
     private ILoadNoticePresenter presenter;
@@ -62,17 +66,21 @@ public class ListNoticeFragment extends BaseFragment implements INoticeView, ILi
         refreshLayout = view.findViewById(R.id.refreshLayout);
 
         activity = (BaseFragmentActivity) getActivity();
-        assert activity != null;
-        adapter = new NoticeAdapter(new ArrayList<>(), this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(adapter);
 
-        refreshLayout.setOnRefreshListener(() -> {
-            refreshLayout.setRefreshing(false);
-            presenter.loadMyNotices(userId);
-        });
+        if(this.isAdded()){
+            adapter = new NoticeAdapter(new ArrayList<>(), this);
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            recyclerView.setAdapter(adapter);
 
-        userId = activity.getCurrentUser().getUid();
+            refreshLayout.setOnRefreshListener(() -> {
+                refreshLayout.setRefreshing(false);
+                presenter.loadMyNotices(userId);
+            });
+
+            if(MyApplication.getFirebaseAuth() != null)
+                userId = Objects.requireNonNull(MyApplication.getFirebaseAuth().getCurrentUser()).getUid();
+        }
+
     }
 
     @Override
@@ -109,7 +117,13 @@ public class ListNoticeFragment extends BaseFragment implements INoticeView, ILi
     }
 
     @Override
-    public void openFragment(BaseFragment fragment) {
-        activity.showFragment(fragment);
+    public void openDetail(Notice notice) {
+        BaseFragment optionNoticeFragment = new EditFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(Constants.ID_NOTICE, notice.getIdNotice());
+        bundle.putString(Constants.USER_ID_NOTICE, notice.getUserId());
+        bundle.putString(Constants.TEXT_NOTICE, notice.getTextNotice());
+        optionNoticeFragment.setArguments(bundle);
+        activity.showFragment(optionNoticeFragment);
     }
 }

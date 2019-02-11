@@ -1,11 +1,13 @@
-package com.example.notificeuserapp.model.room;
+package com.example.notificeuserapp.model.room.notice;
+
+import android.content.Context;
 
 import com.example.notificeuserapp.model.data.Notice;
 import com.example.notificeuserapp.model.room.base.RoomDB;
+import com.example.notificeuserapp.view.application.MyApplication;
 
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.function.IntConsumer;
 
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
@@ -13,8 +15,8 @@ import io.reactivex.schedulers.Schedulers;
 public class RoomNoticeModel implements IRoomNoticeModel {
     private RoomDB database;
 
-    public RoomNoticeModel(RoomDB roomDB) {
-        database = roomDB;
+    public RoomNoticeModel(Context context) {
+        database = MyApplication.getRoomInstance(context);
     }
 
     @Override

@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.notificeuserapp.R;
-import com.example.notificeuserapp.view.fragment.BaseFragment;
+import com.example.notificeuserapp.view.activity.base.BaseFragmentActivity;
 
 public class NoticesActivity extends BaseFragmentActivity {
 

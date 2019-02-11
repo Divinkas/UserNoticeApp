@@ -1,27 +1,19 @@
-package com.example.notificeuserapp.view.activity;
+package com.example.notificeuserapp.view.activity.base;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.google.firebase.FirebaseApp;
+import com.example.notificeuserapp.view.application.MyApplication;
+import com.example.notificeuserapp.view.activity.SignInActivity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public abstract class AuthentificationActivity extends BaseNetworkActivity {
-    protected FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(isNetworkConnection()){
-            FirebaseApp.initializeApp(this);
-            mAuth = FirebaseAuth.getInstance();
-        }
-    }
-
-    public FirebaseUser getCurrentUser(){
-        return mAuth.getCurrentUser();
+        MyApplication.initFirebase(this);
     }
 
     protected void openLoginActivity(){

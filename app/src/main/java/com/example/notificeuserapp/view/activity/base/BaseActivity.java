@@ -1,4 +1,4 @@
-package com.example.notificeuserapp.view.activity;
+package com.example.notificeuserapp.view.activity.base;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
